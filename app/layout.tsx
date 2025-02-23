@@ -1,18 +1,24 @@
-import type React from "react";
-import { Inter } from "next/font/google";
+import { Metadata } from "next";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata = {
+export const metadata: Metadata = {
   title: "麻雀スコア管理アプリ",
-  description: "麻雀の対局スコアを簡単に記録・管理できるWebアプリケーション",
+  description: "麻雀の対局スコアを簡単に記録・管理できます。",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/apple-icon.png",
+    other: {
+      rel: "apple-touch-icon",
+      url: "/apple-icon.png",
+    },
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
-      <body className={inter.className}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }

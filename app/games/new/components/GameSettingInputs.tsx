@@ -129,7 +129,7 @@ export function GameSettingInputs({ settings, onUpdateSetting }: GameSettingsInp
             </div>
 
             <div className="flex-1 md:mt-0 mt-2">
-              <Label htmlFor="second_place_bonus">オカ（トップ賞）</Label>
+              <Label htmlFor="top_bonus">オカ（トップ賞）</Label>
               <Input
                 id="top_bonus"
                 type="number"
@@ -144,7 +144,7 @@ export function GameSettingInputs({ settings, onUpdateSetting }: GameSettingsInp
         </div>
         <div className="md:flex md:space-x-4 w-full mt-2">
           <div className="flex-1 md:mt-0 mt-2">
-            <Label htmlFor="first_place_bonus">焼き鳥（和了なしの罰符）（1名）</Label>
+            <Label htmlFor="penalty_for_no_win_1">焼き鳥（和了なしの罰符）（1名）</Label>
             <Input
               id="penalty_for_no_win_1"
               type="number"
@@ -156,7 +156,7 @@ export function GameSettingInputs({ settings, onUpdateSetting }: GameSettingsInp
             />
           </div>
           <div className="flex-1 md:mt-0 mt-2">
-            <Label htmlFor="first_place_bonus">焼き鳥（和了なしの罰符）（2名）</Label>
+            <Label htmlFor="penalty_for_no_win_2">焼き鳥（和了なしの罰符）（2名）</Label>
             <Input
               id="penalty_for_no_win_2"
               type="number"
@@ -168,7 +168,7 @@ export function GameSettingInputs({ settings, onUpdateSetting }: GameSettingsInp
             />
           </div>
           <div className="flex-1 md:mt-0 mt-2">
-            <Label htmlFor="first_place_bonus">焼き鳥（和了なしの罰符）（3名）</Label>
+            <Label htmlFor="penalty_for_no_win_3">焼き鳥（和了なしの罰符）（3名）</Label>
             <Input
               id="penalty_for_no_win_3"
               type="number"
@@ -181,7 +181,7 @@ export function GameSettingInputs({ settings, onUpdateSetting }: GameSettingsInp
           </div>
 
           <div className="flex-1 md:mt-0 mt-2">
-            <Label htmlFor="second_place_bonus">ぶっとび（ハコ割れ時の罰符）</Label>
+            <Label htmlFor="penalty_for_bust">ぶっとび（ハコ割れ時の罰符）</Label>
             <Input
               id="penalty_for_bust"
               type="number"

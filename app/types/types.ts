@@ -6,5 +6,10 @@ export interface GameSettingType {
   starting_points: number;
   first_place_bonus: number;
   second_place_bonus: number;
+  top_bonus: number;
+  penalty_for_no_win_1: number;
+  penalty_for_no_win_2: number;
+  penalty_for_no_win_3: number;
+  penalty_for_bust: number;
   rate: number;
 }

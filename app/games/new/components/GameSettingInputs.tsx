@@ -127,6 +127,70 @@ export function GameSettingInputs({ settings, onUpdateSetting }: GameSettingsInp
                 required
               />
             </div>
+
+            <div className="flex-1 md:mt-0 mt-2">
+              <Label htmlFor="second_place_bonus">オカ（トップ賞）</Label>
+              <Input
+                id="top_bonus"
+                type="number"
+                value={settings.top_bonus}
+                onChange={e => onUpdateSetting("top_bonus", parseInt(e.target.value))}
+                className="mt-2"
+                min={0}
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <div className="md:flex md:space-x-4 w-full mt-2">
+          <div className="flex-1 md:mt-0 mt-2">
+            <Label htmlFor="first_place_bonus">焼き鳥（和了なしの罰符）（1名）</Label>
+            <Input
+              id="penalty_for_no_win_1"
+              type="number"
+              value={settings.penalty_for_no_win_1}
+              onChange={e => onUpdateSetting("penalty_for_no_win_1", parseInt(e.target.value))}
+              className="mt-2"
+              min={0}
+              required
+            />
+          </div>
+          <div className="flex-1 md:mt-0 mt-2">
+            <Label htmlFor="first_place_bonus">焼き鳥（和了なしの罰符）（2名）</Label>
+            <Input
+              id="penalty_for_no_win_2"
+              type="number"
+              value={settings.penalty_for_no_win_2}
+              onChange={e => onUpdateSetting("penalty_for_no_win_2", parseInt(e.target.value))}
+              className="mt-2"
+              min={0}
+              required
+            />
+          </div>
+          <div className="flex-1 md:mt-0 mt-2">
+            <Label htmlFor="first_place_bonus">焼き鳥（和了なしの罰符）（3名）</Label>
+            <Input
+              id="penalty_for_no_win_3"
+              type="number"
+              value={settings.penalty_for_no_win_3}
+              onChange={e => onUpdateSetting("penalty_for_no_win_3", parseInt(e.target.value))}
+              className="mt-2"
+              min={0}
+              required
+            />
+          </div>
+
+          <div className="flex-1 md:mt-0 mt-2">
+            <Label htmlFor="second_place_bonus">ぶっとび（ハコ割れ時の罰符）</Label>
+            <Input
+              id="penalty_for_bust"
+              type="number"
+              value={settings.penalty_for_bust}
+              onChange={e => onUpdateSetting("penalty_for_bust", parseInt(e.target.value))}
+              className="mt-2"
+              min={0}
+              required
+            />
           </div>
         </div>
       </CardContent>

@@ -14,23 +14,24 @@ export function NewGameForm() {
     usePlayerSettings();
   const { gameSettings, updateGameSetting, validateGameSettings } = useGameSettings();
 
-  const startGame = async () => {
+  const handleStartGame = async () => {
     if (validatePlayerSettings() && validateGameSettings()) {
       try {
-        // TODO: API call to create new game
-        const response = await fetch("/api/games", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(playerSettings),
-        });
+        //   // TODO: API call to create new game
+        //   const response = await fetch("/api/games", {
+        //     method: "POST",
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify(playerSettings),
+        //   });
 
-        if (!response.ok) {
-          throw new Error("Failed to create game");
-        }
+        //   if (!response.ok) {
+        //     throw new Error("Failed to create game");
+        //   }
 
-        const { id } = await response.json();
+        // const { id } = await response.json();
+        const id = 1;
         router.push(`/games/${id}`);
       } catch (error) {
         console.error("Error creating game:", error);
@@ -53,7 +54,7 @@ export function NewGameForm() {
         <GameSettingInputs settings={gameSettings} onUpdateSetting={updateGameSetting} />
       </form>
       <div>
-        <Button className="w-full" onClick={startGame}>
+        <Button className="w-full" onClick={handleStartGame}>
           対局開始
         </Button>
       </div>

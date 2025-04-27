@@ -1,0 +1,14 @@
+export const dummySessions = {
+  id: "1",
+  name: "ダミー麻雀大会",
+  session_date: "2025-01-01",
+  location: "五反田",
+  starting_points: 25000,
+  rate: 1,
+  number_of_games: 1,
+  created_at: "2025-01-01T00:00:00Z",
+  updated_at: "2025-01-01T00:00:00Z",
+  number_of_players: 4,
+  first_place_bonus: 30000,
+  second_place_bonus: 10000,
+};

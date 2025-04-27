@@ -1,0 +1,38 @@
+export const dummySessionScores = [
+  {
+    id: "1",
+    session_id: "1",
+    name: "太郎",
+    total_score: 5000,
+    position: 3,
+    created_at: "2025-01-01T00:00:00Z",
+    updated_at: "2025-01-02T00:00:00Z",
+  },
+  {
+    id: "2",
+    session_id: "1",
+    name: "花子",
+    total_score: 20000,
+    position: 2,
+    created_at: "2025-01-01T00:00:00Z",
+    updated_at: "2025-01-02T00:00:00Z",
+  },
+  {
+    id: "3",
+    session_id: "1",
+    name: "次郎",
+    total_score: 1000,
+    position: 4,
+    created_at: "2025-01-01T00:00:00Z",
+    updated_at: "2025-01-02T00:00:00Z",
+  },
+  {
+    id: "4",
+    session_id: "1",
+    name: "三郎",
+    total_score: 74000,
+    position: 1,
+    created_at: "2025-01-01T00:00:00Z",
+    updated_at: "2025-01-02T00:00:00Z",
+  },
+];

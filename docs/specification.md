@@ -51,6 +51,10 @@ erDiagram
         INTEGER number_of_players
         INTEGER first_place_bonus
         INTEGER second_place_bonus
+        INTEGER penalty_for_bust
+        INTEGER penalty_for_no_win_1
+        INTEGER penalty_for_no_win_2
+        INTEGER penalty_for_no_win_3
         TIMESTAMP created_at
         TIMESTAMP updated_at
     }
@@ -123,20 +127,24 @@ erDiagram
 
 ##### sessions テーブル
 
-| カラム名           | 型           | 説明                                            |
-| ------------------ | ------------ | ----------------------------------------------- |
-| id                 | UUID         | プライマリーキー。セッションの一意識別子        |
-| user_id            | UUID         | セッションを作成したユーザーのID                |
-| session_date       | DATE         | 対局日                                          |
-| location           | VARCHAR(255) | 対局場所（任意）                                |
-| starting_points    | INTEGER      | 開始点数（デフォルト25000）                     |
-| rate               | INTEGER      | 点数レート。例：1の場合は1点=1円（デフォルト1） |
-| number_of_games    | INTEGER      | セッション内の対局数                            |
-| number_of_players  | INTEGER      | プレイ人数（3または4）                          |
-| first_place_bonus  | INTEGER      | 1位のウマ（デフォルト30,000点）                 |
-| second_place_bonus | INTEGER      | 2位のウマ（デフォルト10,000点）                 |
-| created_at         | TIMESTAMP    | レコード作成日時                                |
-| updated_at         | TIMESTAMP    | レコード更新日時                                |
+| カラム名             | 型           | 説明                                            |
+| -------------------- | ------------ | ----------------------------------------------- |
+| id                   | UUID         | プライマリーキー。セッションの一意識別子        |
+| user_id              | UUID         | セッションを作成したユーザーのID                |
+| session_date         | DATE         | 対局日                                          |
+| location             | VARCHAR(255) | 対局場所（任意）                                |
+| starting_points      | INTEGER      | 開始点数（デフォルト25000）                     |
+| rate                 | INTEGER      | 点数レート。例：1の場合は1点=1円（デフォルト1） |
+| number_of_games      | INTEGER      | セッション内の対局数                            |
+| number_of_players    | INTEGER      | プレイ人数（3または4）                          |
+| first_place_bonus    | INTEGER      | 1位のウマ（デフォルト10,000点）                 |
+| second_place_bonus   | INTEGER      | 2位のウマ（デフォルト0点）                      |
+| penalty_for_bust     | INTEGER      | トビ（ハコテンの罰符）（デフォルト0点）         |
+| penalty_for_no_win_1 | INTEGER      | 焼き鳥1名（和了なしの罰符）（デフォルト0点）    |
+| penalty_for_no_win_2 | INTEGER      | 焼き鳥2名（和了なしの罰符）（デフォルト0点）    |
+| penalty_for_no_win_3 | INTEGER      | 焼き鳥3名（和了なしの罰符）（デフォルト0点）    |
+| created_at           | TIMESTAMP    | レコード作成日時                                |
+| updated_at           | TIMESTAMP    | レコード更新日時                                |
 
 ##### session_scores テーブル
 
@@ -199,8 +207,12 @@ CREATE TABLE sessions (
   rate INTEGER NOT NULL DEFAULT 1,
   number_of_games INTEGER NOT NULL DEFAULT 0,
   number_of_players INTEGER NOT NULL DEFAULT 4,
-  first_place_bonus INTEGER NOT NULL DEFAULT 30000,
-  second_place_bonus INTEGER NOT NULL DEFAULT 10000,
+  first_place_bonus INTEGER NOT NULL DEFAULT 10000,
+  second_place_bonus INTEGER NOT NULL DEFAULT 0,
+  penalty_for_bust INTEGER NOT NULL DEFAULT 0,
+  penalty_for_no_win_1 INTEGER NOT NULL DEFAULT 0,
+  penalty_for_no_win_2 INTEGER NOT NULL DEFAULT 0,
+  penalty_for_no_win_3 INTEGER NOT NULL DEFAULT 0,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
   CONSTRAINT valid_starting_points CHECK (starting_points > 0),
@@ -209,6 +221,10 @@ CREATE TABLE sessions (
   CONSTRAINT valid_number_of_players CHECK (number_of_players IN (3, 4)),
   CONSTRAINT valid_first_place_bonus CHECK (first_place_bonus >= 0),
   CONSTRAINT valid_second_place_bonus CHECK (second_place_bonus >= 0)
+  CONSTRAINT valid_penalty_for_bust CHECK (penalty_for_bust >= 0)
+  CONSTRAINT valid_penalty_for_no_win_1 CHECK (penalty_for_no_win_1 >= 0)
+  CONSTRAINT valid_penalty_for_no_win_2 CHECK (penalty_for_no_win_2 >= 0)
+  CONSTRAINT valid_penalty_for_no_win_3 CHECK (penalty_for_no_win_3 >= 0)
 );
 
 CREATE INDEX idx_sessions_date ON sessions(session_date);

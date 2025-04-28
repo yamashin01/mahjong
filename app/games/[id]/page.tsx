@@ -14,7 +14,15 @@ import {
 } from "@/components/ui/table";
 import Link from "next/link";
 import { dummySessions } from "../dummyData/sessions";
-import { CalendarIcon, CoinsIcon, MapPinIcon, TrophyIcon, UsersIcon } from "lucide-react";
+import {
+  BirdIcon,
+  CalendarIcon,
+  CoinsIcon,
+  MapPinIcon,
+  RocketIcon,
+  TrophyIcon,
+  UsersIcon,
+} from "lucide-react";
 import { dummySessionScores } from "../dummyData/sessionScores";
 
 type ScoreType = {
@@ -113,16 +121,42 @@ export default function GamePage() {
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <TrophyIcon className="h-5 w-5 text-muted-foreground" />
-              <span className="text-sm font-medium">
-                ウマ: 1位 {sessionInfo.first_place_bonus.toLocaleString()}, 2位{" "}
-                {sessionInfo.second_place_bonus.toLocaleString()}
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
               <CoinsIcon className="h-5 w-5 text-muted-foreground" />
               <span className="text-sm font-medium">レート: {sessionInfo.rate}</span>
             </div>
+            {(sessionInfo.first_place_bonus > 0 || sessionInfo.second_place_bonus > 0) && (
+              <div className="flex items-center gap-2">
+                <TrophyIcon className="h-5 w-5 text-muted-foreground" />
+                <span className="text-sm font-medium">
+                  ウマ: 1位 {sessionInfo.first_place_bonus.toLocaleString()}, 2位{" "}
+                  {sessionInfo.second_place_bonus.toLocaleString()}
+                </span>
+              </div>
+            )}
+            {sessionInfo.penalty_for_bust > 0 && (
+              <div className="flex items-center gap-2">
+                <RocketIcon className="h-5 w-5 text-muted-foreground" />
+                <span className="text-sm font-medium">
+                  トビ: {sessionInfo.penalty_for_bust.toLocaleString()}
+                </span>
+              </div>
+            )}
+            {(sessionInfo.penalty_for_no_win_1 > 0 ||
+              sessionInfo.penalty_for_no_win_2 > 0 ||
+              sessionInfo.penalty_for_no_win_3 > 0) && (
+              <div className="flex items-center gap-2">
+                <BirdIcon className="h-5 w-5 text-muted-foreground" />
+                <span className="text-sm font-medium">
+                  焼き鳥:{" "}
+                  {sessionInfo.penalty_for_no_win_1 > 0 &&
+                    `1名 ${sessionInfo.penalty_for_no_win_1.toLocaleString()}`}{" "}
+                  {sessionInfo.penalty_for_no_win_2 > 0 &&
+                    `2名 ${sessionInfo.penalty_for_no_win_2.toLocaleString()}`}{" "}
+                  {sessionInfo.penalty_for_no_win_3 > 0 &&
+                    `3名 ${sessionInfo.penalty_for_no_win_3.toLocaleString()}`}
+                </span>
+              </div>
+            )}
           </div>
         </CardContent>
       </Card>

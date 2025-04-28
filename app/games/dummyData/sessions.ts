@@ -11,4 +11,8 @@ export const dummySessions = {
   number_of_players: 4,
   first_place_bonus: 30000,
   second_place_bonus: 10000,
+  penalty_for_no_win_1: 1000,
+  penalty_for_no_win_2: 2000,
+  penalty_for_no_win_3: 0,
+  penalty_for_bust: 10000,
 };

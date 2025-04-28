@@ -139,7 +139,7 @@ erDiagram
 | number_of_players    | INTEGER      | プレイ人数（3または4）                          |
 | first_place_bonus    | INTEGER      | 1位のウマ（デフォルト10,000点）                 |
 | second_place_bonus   | INTEGER      | 2位のウマ（デフォルト0点）                      |
-| penalty_for_bust     | INTEGER      | トビ（ハコテンの罰符）（デフォルト0点）         |
+| penalty_for_bust     | INTEGER      | トビ（ハコ割れの罰符）（デフォルト0点）         |
 | penalty_for_no_win_1 | INTEGER      | 焼き鳥1名（和了なしの罰符）（デフォルト0点）    |
 | penalty_for_no_win_2 | INTEGER      | 焼き鳥2名（和了なしの罰符）（デフォルト0点）    |
 | penalty_for_no_win_3 | INTEGER      | 焼き鳥3名（和了なしの罰符）（デフォルト0点）    |

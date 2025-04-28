@@ -130,7 +130,7 @@ export function GameSettingInputs({ settings, onUpdateSetting }: GameSettingsInp
               </div>
             )}
             <div className="flex-1 md:mt-0 mt-2">
-              <Label htmlFor="penalty_for_bust">ぶっとび（ハコ割れ時の罰符）</Label>
+              <Label htmlFor="penalty_for_bust">トビ（ハコ割れ時の罰符）</Label>
               <Input
                 id="penalty_for_bust"
                 type="number"

@@ -62,7 +62,7 @@ export function GameSettingInputs({ settings, onUpdateSetting }: GameSettingsInp
                 onValueChange={value =>
                   onUpdateSetting("number_of_players", parseInt(value) as 3 | 4)
                 }
-                className="flex mt-2"
+                className="flex mt-2 justify-center items-center space-x-4 pt-2"
               >
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="3" id="three-players" />
@@ -115,26 +115,27 @@ export function GameSettingInputs({ settings, onUpdateSetting }: GameSettingsInp
               />
             </div>
 
+            {settings.number_of_players === 4 && (
+              <div className="flex-1 md:mt-0 mt-2">
+                <Label htmlFor="second_place_bonus">ウマ（2位）</Label>
+                <Input
+                  id="second_place_bonus"
+                  type="number"
+                  value={settings.second_place_bonus}
+                  onChange={e => onUpdateSetting("second_place_bonus", parseInt(e.target.value))}
+                  className="mt-2"
+                  min={0}
+                  required
+                />
+              </div>
+            )}
             <div className="flex-1 md:mt-0 mt-2">
-              <Label htmlFor="second_place_bonus">ウマ（2位）</Label>
+              <Label htmlFor="penalty_for_bust">トビ（ハコ割れ時の罰符）</Label>
               <Input
-                id="second_place_bonus"
+                id="penalty_for_bust"
                 type="number"
-                value={settings.second_place_bonus}
-                onChange={e => onUpdateSetting("second_place_bonus", parseInt(e.target.value))}
-                className="mt-2"
-                min={0}
-                required
-              />
-            </div>
-
-            <div className="flex-1 md:mt-0 mt-2">
-              <Label htmlFor="top_bonus">オカ（トップ賞）</Label>
-              <Input
-                id="top_bonus"
-                type="number"
-                value={settings.top_bonus}
-                onChange={e => onUpdateSetting("top_bonus", parseInt(e.target.value))}
+                value={settings.penalty_for_bust}
+                onChange={e => onUpdateSetting("penalty_for_bust", parseInt(e.target.value))}
                 className="mt-2"
                 min={0}
                 required
@@ -167,31 +168,20 @@ export function GameSettingInputs({ settings, onUpdateSetting }: GameSettingsInp
               required
             />
           </div>
-          <div className="flex-1 md:mt-0 mt-2">
-            <Label htmlFor="penalty_for_no_win_3">焼き鳥（和了なしの罰符）（3名）</Label>
-            <Input
-              id="penalty_for_no_win_3"
-              type="number"
-              value={settings.penalty_for_no_win_3}
-              onChange={e => onUpdateSetting("penalty_for_no_win_3", parseInt(e.target.value))}
-              className="mt-2"
-              min={0}
-              required
-            />
-          </div>
-
-          <div className="flex-1 md:mt-0 mt-2">
-            <Label htmlFor="penalty_for_bust">ぶっとび（ハコ割れ時の罰符）</Label>
-            <Input
-              id="penalty_for_bust"
-              type="number"
-              value={settings.penalty_for_bust}
-              onChange={e => onUpdateSetting("penalty_for_bust", parseInt(e.target.value))}
-              className="mt-2"
-              min={0}
-              required
-            />
-          </div>
+          {settings.number_of_players === 4 && (
+            <div className="flex-1 md:mt-0 mt-2">
+              <Label htmlFor="penalty_for_no_win_3">焼き鳥（和了なしの罰符）（3名）</Label>
+              <Input
+                id="penalty_for_no_win_3"
+                type="number"
+                value={settings.penalty_for_no_win_3}
+                onChange={e => onUpdateSetting("penalty_for_no_win_3", parseInt(e.target.value))}
+                className="mt-2"
+                min={0}
+                required
+              />
+            </div>
+          )}
         </div>
       </CardContent>
     </Card>
